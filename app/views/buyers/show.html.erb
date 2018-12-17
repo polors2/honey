@@ -1,0 +1,81 @@
+<center>
+  <br>
+  <% if buyer_logged_in? %>
+<img src="/pics/b.gif" width=150px id="hi">
+  <%end%>
+
+<div class = "form">
+<p id="notice"><%= notice %></p>
+
+<b>Buyer:</b> <%=@buyer.email%> <br> <br>
+
+<%= link_to 'Edit Profile', edit_buyer_path(@buyer), class: 'navbutton'%>
+<%= link_to 'Delete My Profile', @buyer, class: 'navbutton', method: :delete, data: { confirm: 'Are you sure you want to delete your account?' } %>
+<!--%= link_to 'Back to Home', buyer_path(@buyer.id), class: 'navbutton' %-->
+
+</div>
+
+<img src="/pics/lauren.png" width=350px align="left"" >
+<img src="/pics/ew.png" width=300px align="right"">
+</br>
+<br>
+  </center>
+  <div class = "display-2">
+    <div class="tables">
+      <table  class="table">
+      <thead >
+        <tr>
+          <th colspan="4"><h1>Available Products</h1></th>
+        </tr>
+        <tr>
+          <th>Seller</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <% @sale.each do |sale| %>
+        <% if !sale.buyer_id? %>
+      <tbody>
+              <td><%= Seller.find(sale.seller_id).email%></td>
+              <td><%= Product.find(sale.product_id).name  %></td>
+              <td><%= sale.price%></td>
+              <td>
+              <%= form_for sale do |s| %>
+              <%= s.hidden_field :buyer_id, value: session[:buyer_id]%>
+              <%= s.submit "Buy", class: 'tablebutton' %>
+              <%end%>
+              </td>
+              <!-- <td><button type="submit">Buy</button></td> -->
+          <%end%>
+        <%end%>
+      </tbody>
+      </table>
+      </div>
+        <table  class="table">
+        <thead>
+          <tr>
+            <th colspan="3"><h1>Show Purchases</h1></th>
+          </tr>
+          <tr>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <% @sale.each do |sale| %>
+        <% if sale.buyer_id? %>
+          <% if sale.buyer_id == session[:buyer_id] %>
+        <tbody>
+              <td><%= Seller.find(sale.seller_id).email%></td>
+              <td><%= Product.find(sale.product_id).name%></td>
+              <td><%= sale.price%></td>
+            <%end%>
+          <%end%>
+            </br>
+          <%end%>
+        </tbody>
+        </table>
+</div>
+<br><br>
+<center><img src="/pics/sanchy.png" width=350px; align="center" > </center>

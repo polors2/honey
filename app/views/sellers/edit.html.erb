@@ -1,0 +1,12 @@
+<h1>Editing Seller</h1>
+
+<%= render 'form', seller: @seller %>
+
+<center> <br> <br><% if !admin_logged_in? %>
+<%= link_to 'Show', @seller, class:'button2' %>
+<%= link_to 'Back', seller_url(@seller.id), class:'button2' %>
+<%else%>
+<%= link_to 'Back', dashboard_url, class:'button2' %>
+<%end%>
+
+<!--%= link_to 'Back', dashboard_path(session[:admin_id]), class: "button-back" %>

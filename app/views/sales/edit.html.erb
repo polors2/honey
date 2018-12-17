@@ -1,0 +1,8 @@
+<h1>Editing Sale of <%=Seller.find(@sale.seller_id).email%></h1>
+
+<%= render 'form', sale: @sale %>
+<% if admin_logged_in? %>
+<%= link_to 'Back', sales_path, class:'button-back' %>
+<% elsif seller_logged_in? %>
+<%= link_to 'Back', seller_path(session[:seller_id]), class:'button-back' %>
+<%end%>

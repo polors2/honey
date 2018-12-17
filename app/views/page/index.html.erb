@@ -1,0 +1,39 @@
+`<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <center>
+    <img src="/pics/title.png" alt="" id="honeydew" >
+    <table  class="table">
+    <thead >
+      <tr>
+        <th colspan="4"><h1>Available Products</h1></th>
+      </tr>
+      <tr>
+        <th>Seller</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sale.each do |sale| %>
+      <tr>
+        <% if !sale.buyer_id? %>
+            <td><%= Seller.find(sale.seller_id).email%></td>
+            <td><%= Product.find(sale.product_id).name  %></td>
+            <td><%= sale.price%></td>
+            <td><%= link_to 'Login to Buy', login_path, class: 'tablebutton' %>
+            <!-- <td><button type="submit">Buy</button></td> -->
+        <%end%>
+        </tr>
+      <%end%>
+    </tbody>
+    </table>
+        </center>
+<img src="/pics/foot.png" width="1250", class="main-footer" >
+  </body>
+</html>

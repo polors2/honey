@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+      <center><img src="/pics/text.gif" alt="" width="150px", id="login">
+      <div class="register">
+      <%= form_for(:session, url: login_path) do |s| %>
+        <p>
+          <%= s.label :email %>
+          <%= s.email_field :email, placeholder: "email@email.com" %>
+        </p>
+        <p>
+          <%= s.label :password %>
+          <%= s.password_field :password, autocomplete: "off" %>
+        </p>
+        <p>
+            <%= s.submit "Log in", class:'button' %>
+      <% end %>
+      </div>
+</body>
+</html>

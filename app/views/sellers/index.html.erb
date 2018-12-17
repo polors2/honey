@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sellers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sellers.each do |seller| %>
+      <tr>
+        <%if admin_logged_in? %>
+
+        <td><%= link_to 'Edit', edit_seller_path(seller), class: 'button' %></td>
+        <td><%= link_to 'Destroy', seller, class: 'button', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<center><span class="button">
+<%if seller_logged_in? %>
+<%= link_to 'Back', seller_path(session[:seller_id])%>
+<%end%>
+<%if buyer_logged_in? %>
+<%= link_to 'Back', buyer_path(session[:buyer_id])%>
+<%end%>
+</span></center>
+<br>

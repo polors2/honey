@@ -1,0 +1,35 @@
+// Place all the styles related to the sellers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.register{
+	width: 100%;
+	margin-top: -60px;
+	padding-top: 100px;
+	border-left: 50px;
+	border-right: 50px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-ms-flex-align: center;
+	    align-items: center;
+	-ms-flex-direction: column;
+	    flex-direction: column;
+	 text-align: center;
+}
+.form{
+	max-width:500px;
+	background: #708e38;
+	padding:20px;
+	font-size: 12px;
+	color: #ffffff;
+	margin: auto;
+	margin-top: 50px;
+
+}
+.show {
+	display: block;
+
+}

@@ -1,0 +1,14 @@
+<center>
+  <p id="notice"><%= notice %></p>
+  <%if admin_logged_in? %>
+  <%= link_to 'Edit', edit_sale_path(@sale), class:'button' %> |
+  <%= link_to 'Back', sales_path, class:'button' %>
+  <%end%>
+  <%if buyer_logged_in?%>
+  <h1>Nice! You just bought a <%=Product.find(@sale.product_id).name%></h1>
+  <%= link_to 'Back to Home', buyer_path(session[:buyer_id]), class:'button-back' %>
+  <%end%>
+  <% if seller_logged_in? %>
+  <%= link_to 'Back', sales_path, class:'button' %>
+  <%end%>
+  </center>

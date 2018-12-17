@@ -1,0 +1,34 @@
+<%= form_with(model: sale, local: true) do |form| %>
+<%# https://stackoverflow.com/questions/6710965/include-blank-for-first-item-in-select-list-in-options-for-select-tag %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <div class="register">
+  <% if admin_logged_in? %>
+  <%= form.label :seller_id %>
+  <%= form.select(:seller_id, Seller.all.pluck(:email, :id))%>
+  <%end%>
+  </p>
+  <p>
+  <%= form.label :product_id %>
+  <%= form.select(:product_id, Product.all.pluck(:name, :id))%>
+  </p>
+  <p>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  </p>
+  <p>
+  <%= form.label :remarks %>
+  <%= form.text_field :remarks %>
+  </p>
+    <%= form.submit class:'button'  %>
+<% end %>

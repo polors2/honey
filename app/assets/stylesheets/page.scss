@@ -1,0 +1,96 @@
+// Place all the styles related to the page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1{
+font-family: 'Georgia', serif;
+font-weight: lighter;
+  color: #000000;
+   margin:0px;
+}
+
+.main-navbar{
+	background-color: white;
+	padding: 60px;
+	position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-right{
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-top: -10px;
+}
+
+.navbar-left{
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
+  margin-top: -40px;
+}
+
+ .select{
+    color: black;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    display:inline-block;
+    font-size: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: crosshair;
+    margin: 2px;
+    top: 70%;
+    position:absolute;
+}
+.navigation-wrapper{
+    display: inline-block;
+    margin-top: 5px;
+     margin-left: 10px;
+}
+.items {
+float: right;
+ justify-content: right;
+ position: right;}
+
+ .navbutton{
+   text-decoration: none ;
+   width: auto;
+   font-weight: normal;
+   font-size: 12px;
+   color: #708e38;
+   padding: 20px;
+   margin-right: 10px;
+
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: crosshair;
+
+ }
+
+ .navbutton:hover{
+  text-decoration: none ;
+  background: #708e38;
+  font-weight: normal;
+  color: white;
+  -webkit-transition:0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+#honeydew{
+  width: 70%;
+  height: auto;
+  padding-bottom: 20px;
+}
+.main-footer{
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  margin-left: 30px;
+}

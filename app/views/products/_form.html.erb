@@ -1,0 +1,31 @@
+<%# https://stackoverflow.com/questions/33439993/how-to-populate-dropdown-menu-based-on-rails-database-values %>
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="register">
+  <p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  </p>
+  <p>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  </p>
+  <p>
+  <%= form.label :category_id %>
+  <%= form.select(:category_id, Category.all.pluck(:name, :id))%>
+  </p>
+  <div class="actions">
+         <%= form.submit class:'button'  %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,90 @@
+<center>
+    <% if seller_logged_in? %>
+    <img src="/pics/s.gif" width=150px id="hi">
+    <%end%>
+    </center>
+  <div class = "form">
+
+  <p id="notice"><%= notice %></p>
+<center>
+
+  <b>Seller: </b><%=@seller.email%> <br> <br>
+
+  <%= link_to 'Edit Profile', edit_seller_path(@seller),class: 'navbutton' %>
+  <%= link_to 'Add Products', products_path, class: 'navbutton'%>
+  <%= link_to 'Add Sales', sales_path, class: 'navbutton'%>
+  <%= link_to 'Delete My Profile', @seller, class: 'navbutton', method: :delete, data: { confirm: 'Are you sure you want to delete your account?' } %>
+  <!--%= link_to 'Back to Home', seller_path(@seller.id) %-->
+</center>  </div>
+</br>
+  <div class = "display">
+    <div class="tables">
+      <table  class="table">
+      <thead >
+        <tr>
+          <th colspan="5"><h1>All Products</h1>
+        </tr>
+        <tr>
+          <th>Seller</th>
+          <th>Product</th>
+          <th>Buyer</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sale.each do |sale| %>
+          <tr>
+            <%if sale.seller_id == session[:seller_id] %>
+            <td><%= Seller.find(sale.seller_id).email%></td>
+            <td><%= Product.find(sale.product_id).name  %></td>
+            <td>
+              <% if sale.buyer_id? %>
+              <%= Buyer.find(sale.buyer_id).email %>
+              <%end%>
+            </td>
+            <td><%= link_to 'Edit', edit_sale_path(sale), class: 'tablebutton' %>
+            <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tablebutton' %></td>
+            <%end%>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+      </div>
+
+      <div class="tables">
+        <table  class="table">
+        <thead >
+          <tr>
+            <th colspan="5"><h1>Available for Sale</h1>
+          </tr>
+          <tr>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Buyer</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sale.each do |sale| %>
+            <tr>
+              <%if sale.seller_id == session[:seller_id] && sale.buyer_id == nil %>
+              <td><%= Seller.find(sale.seller_id).email%></td>
+              <td><%= Product.find(sale.product_id).name  %></td>
+              <td>
+                <% if sale.buyer_id? %>
+                <%= Buyer.find(sale.buyer_id).email %>
+                <%end%>
+              </td>
+              <td><%= link_to 'Edit', edit_sale_path(sale), class: 'tablebutton' %>
+              <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tablebutton' %></td>
+              <%end%>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+        </div>
+</div>
+<br><br>
+<br><br>
+<br>
+<center><img src="/pics/shop.gif" width=400px>

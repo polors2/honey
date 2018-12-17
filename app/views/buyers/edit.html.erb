@@ -1,0 +1,11 @@
+<h1>Edit Buyer</h1>
+
+<%= render 'form', buyer: @buyer %>
+<center> <br> <br>
+<% if !admin_logged_in? %>
+<%= link_to 'Show', @buyer, class:'button2' %>
+<%= link_to 'Back', buyer_url(@buyer.id), class:'button2' %>
+<%else%>
+<%= link_to 'Back', dashboard_url, class:'button2' %>
+<%end%>
+</center>

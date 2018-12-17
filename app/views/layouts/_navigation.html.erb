@@ -1,0 +1,24 @@
+<nav class ="main-navbar">
+  <div class="navbar-left">
+      <img src="/pics/melon.png" alt="" width="80px">
+    </div>
+  <div class = "navbar-right">
+    <% if buyer_logged_in? || seller_logged_in? || admin_logged_in? %>
+    <%= link_to "Logout", logout_path, class: 'navbutton' %> <%if admin_logged_in? %>
+    <%= link_to "Back to Home", dashboard_path(session[:admin_id]), class: 'navbutton' %>
+    <%end%>
+      <%if buyer_logged_in? %><%= link_to "Back to Home", buyer_path(session[:buyer_id]), class: 'navbutton'%>
+      <%end%>
+      <%if seller_logged_in? %><%= link_to 'Back to Home', seller_path(session[:seller_id]),class: 'navbutton'%><%end%>
+    <% else %>
+    <%= link_to "Home", root_path, class: 'navbutton' %>
+    <%= link_to "About Us", about_path, class: 'navbutton' %>
+    <%= link_to "Register as Buyer", newbuyer_url, class: 'navbutton' %>
+    <%= link_to "Register as Seller", newseller_url, class: 'navbutton' %>
+    <%= link_to "Login", login_path, class: 'navbutton'  %>
+  <%end%>
+  </div>
+  </nav>
+
+  <br>
+  <div class="user">

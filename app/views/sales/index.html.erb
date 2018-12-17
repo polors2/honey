@@ -1,0 +1,125 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="display">
+<% if seller_logged_in? %>
+    <div class="tables">
+      <p id="notice"><%= notice %></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4">  <h1>Sold Products</h1></th>
+          </tr>
+          <tr>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Buyer</th>
+            <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <% @sales.each do |sale| %>
+        <% if sale.buyer_id? %>
+          <% if sale.seller_id == session[:seller_id] %>
+        <tbody>
+              <td height = '30'><%= Seller.find(sale.seller_id).email%></td>
+              <td><%= Product.find(sale.product_id).name  %></td>
+              <td><%= Buyer.find(sale.buyer_id).email  %></td>
+              <td><%= link_to 'Edit', edit_sale_path(sale), class: 'tablebutton' %></td>
+              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tablebutton' %></td>
+            <%end%>
+          <%end%>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+    <div class="tables">
+    <center>
+      <p id="notice"><%= notice %></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4">  <h1>Available Products</h1></th>
+          </tr>
+          <tr>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <% @sales.each do |sale| %>
+        <% if !sale.buyer_id? %>
+          <% if sale.seller_id == session[:seller_id] %>
+        <tbody>
+              <td height='30'><%= Seller.find(sale.seller_id).email%></td>
+              <td><%= Product.find(sale.product_id).name  %></td>
+              <td>Php <%= sale.price  %></td>
+              <td><%= link_to 'Edit', edit_sale_path(sale), class: 'tablebutton' %>
+              <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tablebutton' %></td>
+            <%end%>
+          <%end%>
+          <%end%>
+          <%end%>
+
+          <% if admin_logged_in? %>
+              <div class="tables">
+                <p id="notice"><%= notice %></p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">  <h1>Sold Products</h1></th>
+                    </tr>
+                    <tr>
+                      <th>Seller</th>
+                      <th>Product</th>
+                      <th>Buyer</th>
+                      <th colspan="2">Actions</th>
+                      </tr>
+                  </thead>
+                  <% @sales.each do |sale| %>
+                  <% if sale.buyer_id? %>
+                  <tbody>
+                        <td height = '30'><%= Seller.find(sale.seller_id).email%></td>
+                        <td><%= Product.find(sale.product_id).name  %></td>
+                        <td><%= Buyer.find(sale.buyer_id).email  %></td>
+                        <td><%= link_to 'Edit', edit_sale_path(sale), class:'tablebutton' %></td>
+                        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class:'tablebutton' %></td>
+                    <%end%>
+                    <%end%>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tables">
+              <center>
+                <p id="notice"><%= notice %></p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">  <h1>Available Products</h1></th>
+                    </tr>
+                    <tr>
+                      <th>Seller</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th colspan="2">Actions</th>
+                      </tr>
+                  </thead>
+                  <% @sales.each do |sale| %>
+                  <% if !sale.buyer_id? %>
+                  <tbody>
+
+
+                        <td height='30'><%= Seller.find(sale.seller_id).email%></td>
+                        <td><%= Product.find(sale.product_id).name  %></td>
+                        <td>Php <%= sale.price  %></td>
+                        <td><%= link_to 'Edit', edit_sale_path(sale), class: 'tablebutton' %>
+                        <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tablebutton' %></td>
+                      <%end%>
+                    <%end%>
+                    <%end%>
+
+
+        </tbody>
+      </table>
+      </center>
+    </div>

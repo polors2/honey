@@ -1,0 +1,40 @@
+<div class="register">
+  <%= form_with(model: buyer, local: true) do |form| %>
+    <% if buyer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(buyer.errors.count, "error") %> prohibited this buyer from being saved:</h2>
+
+        <ul>
+        <% buyer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+    </p>
+    <p>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+    </p>
+    <p>
+    <%= form.label :sex %>
+    <%= form.select :sex, ['Male', 'Female']%>
+    </p>
+    <p>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+    </p>
+    <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    </p>
+    <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+    </p>
+          <%= form.submit class:'button'  %>
+  <% end %>
+</div>
